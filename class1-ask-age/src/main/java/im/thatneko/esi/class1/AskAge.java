@@ -22,7 +22,7 @@ public class AskAge {
                 break;
             }
             case "3": {
-
+                thirdExercise(scanner);
                 break;
             }
             case "q": {
@@ -59,5 +59,21 @@ public class AskAge {
         edad = Integer.valueOf(scanner.nextLine());
 
         System.out.println("La edad ingresada es " + (edad >= MAYORIA_DE_EDAD ? "mayor" : "menor") + " de edad");
+    }
+
+    public static void thirdExercise(Scanner scanner) {
+        int mayores = 0;
+        int menores = 0;
+        int edad = 0;
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Ingrese edad: ");
+            edad = Integer.valueOf(scanner.nextLine());
+            if (edad >= MAYORIA_DE_EDAD) {
+                mayores++;
+            } else {
+                menores++;
+            }
+        }
+        System.out.println("Hay " + mayores + " mayores de edad y " + menores + " menores de edad.");
     }
 }
