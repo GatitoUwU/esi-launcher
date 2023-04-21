@@ -18,7 +18,7 @@ public class CalculateVelocity {
                 break;
             }
             case "2": {
-                //secondExercise(scanner);
+                secondExercise(scanner);
                 break;
             }
             case "q": {
@@ -37,15 +37,19 @@ public class CalculateVelocity {
 
         double velocity = distance / time;
 
-        System.out.println("La velocidad es de " + fastRound(velocity) + "m/s.");
+        System.out.printf("La velocidad es de %.2fm/s.\n", velocity);
+    }
+
+    public static void secondExercise(Scanner scanner) {
+        double centimeters = Double.parseDouble(askToConsole("Indica la centimetros", scanner));
+
+        double inches = centimeters / 2.54;
+
+        System.out.printf("%fcm son %.2f pulgadas.\n", centimeters, inches);
     }
 
     public static String askToConsole(String s, Scanner scanner) {
         System.out.print(s + ": ");
         return scanner.nextLine();
-    }
-
-    public static double fastRound(double d) {
-        return ((int) (d * 2)) / 2.0;
     }
 }
