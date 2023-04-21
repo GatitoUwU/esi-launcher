@@ -1,6 +1,7 @@
 package im.thatneko.esi.launcher;
 
 import im.thatneko.esi.class1.AskAge;
+import im.thatneko.esi.class2.CalculateVelocity;
 
 import java.util.Scanner;
 
@@ -15,6 +16,10 @@ public class ESILauncher {
         switch (clazz) {
             case "1": {
                 AskAge.main(args);
+                break;
+            }
+            case "2": {
+                CalculateVelocity.main(args);
                 break;
             }
             case "q": {
