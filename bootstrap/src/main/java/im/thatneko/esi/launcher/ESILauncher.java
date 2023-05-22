@@ -37,9 +37,9 @@ public class ESILauncher {
                 break;
             }
         }
+        System.out.println();
+        System.out.println("La clase lanzada parece haber terminado su flujo, volviendo a ESI-Launcher");
+        System.out.println();
         main(args);
-        for (int i = 0; i < 15; i++) {
-            System.out.println();
-        }
     }
 }

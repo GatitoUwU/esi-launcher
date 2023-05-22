@@ -1,2 +1,2 @@
 #!/bin/bash
-mvn clean install -T4; clear; java -jar bootstrap/target/ESI-Launcher-Bootstrap.jar
+mvn clean install -T4; clear; java -Dfile.encoding=UTF-8 -jar bootstrap/target/ESI-Launcher-Bootstrap.jar

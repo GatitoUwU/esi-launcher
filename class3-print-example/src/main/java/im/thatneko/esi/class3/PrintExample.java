@@ -18,33 +18,40 @@ public class PrintExample {
                         "Ingrese el tipo de carne"
         ))];
         int burgerQuantity = Integer.parseInt(askForInput(scanner, "Cantidad de hamburguesas"));
-        String seasonings = Arrays.stream(BurgerType.values()).map(burgerType ->
-                " - " + burgerType.burgerNumber + ": " + burgerType.displayName).collect(Collectors.joining("\n"));
+        String seasonings = Arrays.stream(SeasoningType.values()).map(seasoningType ->
+                " - " + seasoningType.seasoningNumber + ": " + seasoningType.displayName).collect(Collectors.joining("\n  "));
         String seasoningsInput = askForInput(scanner,
-                "Condimentos:\n" +
+                "Condimentos:\n  " +
                         seasonings + "\n" +
                         "Ingrese los condimentos, separados por coma"
         );
 
         String[] seasoningInputSplit = seasoningsInput.split(",");
-        List<SeasoningType> seasoningTypes = Arrays.stream(seasoningInputSplit).map(s -> SeasoningType.values()[Integer.parseInt(s)]).collect(Collectors.toList());
+        List<SeasoningType> seasoningTypes = Arrays.stream(seasoningInputSplit)
+                .map(s -> SeasoningType.values()[Integer.parseInt(s)])
+                .collect(Collectors.toList());
+
+        String fancierSeasonings = seasoningTypes.stream()
+                .map(seasoningType -> seasoningType.displayName)
+                .collect(Collectors.joining(", "));
 
         boolean withFries = askForInput(scanner, "Con fritas (S/n)").toLowerCase().startsWith("s");
 
+        int baseBurgerPrice = 50;
+        int burgerPrice = burgerType.burgerPrice;
+        int friesPrice = 50;
+
+        int total = baseBurgerPrice + (burgerPrice * burgerQuantity) + (withFries ? friesPrice : 0);
+
         System.out.println("****************************************** GRACIAS POR SU COMPRA ******************************");
-        System.out.println(">>>>>>>>>> " + clientName + " : Detalle del pedido \n");
+        System.out.println("¡Gracias, " + clientName + "! Detalle del pedido");
         System.out.println();
-        System.out.println(">>>>>>>>>> \"Usted lleva \" , "+burgerQuantity+"x ,  "+burgerType.displayName+".");
-                "\n" +
-                ">>>>>>>>>>  \"Con los condimentos \" , CONDIMENTOS\n" +
-                "\n" +
-                " \n" +
-                "\n" +
-                ">>>>>>>>>>  \"Con fritas \" , (verdadero o falso)\n" +
-                "\n" +
-                " \n" +
-                "\n" +
-                ">>>>>>>>>>  \"Total a pagar \" , TOTAL");
+        System.out.println(">>>>>>>>>> \"Usted lleva \":");
+        System.out.println("             " + burgerQuantity + "x Hamburguesa de " + burgerType.displayName + ".");
+        System.out.println(">>>>>>>>>>  Con los condimentos: "+fancierSeasonings);
+        System.out.println(">>>>>>>>>>  Con fritas: " + (withFries ? "sí" : "no"));
+        System.out.println(">>>>>>>>>>  Total a pagar: " + total);
+        System.out.println("****************************************** GRACIAS POR SU COMPRA ******************************");
     }
 
     public static String askForInput(Scanner scanner, String inputConsole) {
@@ -56,20 +63,24 @@ public class PrintExample {
     public static int burgerTypeCount = 0;
 
     public enum BurgerType {
-        TOFU("Tofu"),
-        CHICKEN("Pollo"),
-        COW("Vaca");
+        TOFU("Tofu", 60),
+        CHICKEN("Pollo", 50),
+        COW("Vaca", 40);
 
         private final String displayName;
         private final int burgerNumber;
+        private final int burgerPrice;
 
-        BurgerType(String displayName) {
+        BurgerType(String displayName, int burgerPrice) {
             this.displayName = displayName;
             this.burgerNumber = burgerTypeCount;
+            this.burgerPrice = burgerPrice;
 
             burgerTypeCount++;
         }
     }
+
+    public static int seasoningCount = 0;
 
     public enum SeasoningType {
         MAYONNAISE("Mayonesa"),
@@ -77,9 +88,13 @@ public class PrintExample {
         MUSTARD("Mostaza");
 
         private final String displayName;
+        private final int seasoningNumber;
 
         SeasoningType(String displayName) {
             this.displayName = displayName;
+
+            this.seasoningNumber = seasoningCount;
+            seasoningCount++;
         }
     }
 }
