@@ -46,11 +46,11 @@ public class PrintExample {
         System.out.println("****************************************** GRACIAS POR SU COMPRA ******************************");
         System.out.println("¡Gracias, " + clientName + "! Detalle del pedido");
         System.out.println();
-        System.out.println(">>>>>>>>>> \"Usted lleva \":");
-        System.out.println("             " + burgerQuantity + "x Hamburguesa de " + burgerType.displayName + ".");
-        System.out.println(">>>>>>>>>>  Con los condimentos: "+fancierSeasonings);
-        System.out.println(">>>>>>>>>>  Con fritas: " + (withFries ? "sí" : "no"));
-        System.out.println(">>>>>>>>>>  Total a pagar: " + total);
+        System.out.println("\"Usted lleva \":");
+        System.out.println("  " + burgerQuantity + "x Hamburguesa de " + burgerType.displayName + ".");
+        System.out.println("Con los condimentos: "+fancierSeasonings);
+        System.out.println("Con fritas: " + (withFries ? "sí" : "no"));
+        System.out.println("Total a pagar: " + total);
         System.out.println("****************************************** GRACIAS POR SU COMPRA ******************************");
     }
 
